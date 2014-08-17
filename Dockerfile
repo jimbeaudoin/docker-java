@@ -22,3 +22,4 @@ RUN apt-get -y upgrade
 
 # Test
 RUN mkdir /test
+RUN mkdir /test2
