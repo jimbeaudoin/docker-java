@@ -33,7 +33,7 @@ ADD ./jre /src/jre
 RUN mkdir -p /usr/lib/jvm
 
 # Uncompress jre to jvm folder
-RUN tar -xzf /src/jre-7u67-linux-x64.tar.gz -C /usr/lib/jvm
+RUN tar -xzf /src/jre/jre-7u67-linux-x64.tar.gz -C /usr/lib/jvm
 
 # Inform the system about the new Java Runtime
 RUN update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jre1.7.0_67/bin/java" 1
