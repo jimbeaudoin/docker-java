@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# By using this file, you accept the Oracle Binary Code License Agreement
+# for Java SE available at http://www.oracle.com/technetwork/java/javase/terms/license/index.html
+
 FROM debian:6.0
 
 MAINTAINER Jimmy Beaudoin <contact@jim-beaudoin.com>
@@ -20,6 +23,11 @@ MAINTAINER Jimmy Beaudoin <contact@jim-beaudoin.com>
 RUN apt-get update
 RUN apt-get -y upgrade
 
-# Test
-RUN mkdir /test
-RUN mkdir /test2
+# Install wget
+RUN apt-get -y install wget
+
+# Make src directory
+RUN mkdir /src
+
+# Add jre tar file to src folder
+ADD ./jre /src/jre
