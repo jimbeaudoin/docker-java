@@ -23,11 +23,20 @@ MAINTAINER Jimmy Beaudoin <contact@jim-beaudoin.com>
 RUN apt-get update
 RUN apt-get -y upgrade
 
-# Install wget
-RUN apt-get -y install wget
-
 # Make src directory
 RUN mkdir /src
 
 # Add jre tar file to src folder
 ADD ./jre /src/jre
+
+# Create jvm (Java Virtual Machine) directory
+RUN mkdir -p /usr/lib/jvm
+
+# Uncompress jre to jvm folder
+RUN tar -xzf jre-7u67-linux-x64.tar.gz -C /usr/lib/jvm
+
+# Inform the system about the new Java Runtime
+RUN update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jre1.7.0_67/bin/java" 1
+
+# Set the system default Java Runtime
+RUN update-alternatives --set java /usr/lib/jvm/jre1.7.0_67/bin/java
